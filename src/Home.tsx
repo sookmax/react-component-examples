@@ -5,7 +5,7 @@ export default function Home() {
     <div className="bg-white relative">
       <a
         className="hidden absolute z-10 top-0 right-0 lg:flex justify-center items-center p-4"
-        href="https://github.com/sookmax"
+        href="https://github.com/sookmax/react-component-examples"
         target="_blank"
       >
         <GithubSvg className="h-8 w-8" />

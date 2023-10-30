@@ -238,7 +238,7 @@ export default function Root() {
             </button>
             <a
               className="flex justify-center items-center"
-              href="https://github.com/sookmax"
+              href="https://github.com/sookmax/react-component-examples"
               target="_blank"
             >
               <GithubSvg className="h-7 w-7" />
