@@ -9,6 +9,6 @@ export async function loader({ params }: LoaderFunctionArgs) {
 }
 
 export default function Component() {
-  const { Comp } = useLoaderData() as { Comp: () => React.ReactNode };
+  const { Comp } = useLoaderData() as { Comp: () => React.ReactElement };
   return <Comp />;
 }
