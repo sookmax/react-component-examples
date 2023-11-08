@@ -13,11 +13,14 @@
     "@headlessui/react": "^1.7.17",
     "@heroicons/react": "^2.0.18",
     "@spectrum-icons/workflow": "^4.2.6",
+    "@tanstack/react-virtual": "3.0.0-beta.68",
+    "framer-motion": "^10.16.4",
     "fuse.js": "^6.6.2",
     "react": "^18.2.0",
     "react-aria-components": "1.0.0-beta.2",
     "react-dom": "^18.2.0",
-    "react-router-dom": "^6.17.0"
+    "react-router-dom": "^6.17.0",
+    "react-stately": "^3.27.1"
   },
   "devDependencies": {
     "@types/react": "^18.2.15",

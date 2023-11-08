@@ -26,26 +26,17 @@ export default function Home() {
         <div className="mx-auto max-w-xl py-32 sm:py-48 lg:py-56">
           <div className="text-center">
             <h1 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl flex flex-col">
-              React Component Examples
+              React Aria Component Examples
             </h1>
             <p className="mt-6 text-lg leading-8 text-gray-600">
-              Collection of well-crafted React components from{" "}
+              From{" "}
               <a
                 target="_blank"
                 href="https://react-spectrum.adobe.com/react-aria/react-aria-components.html"
                 className="font-semibold text-indigo-600"
               >
                 React Aria Components
-              </a>{" "}
-              and{" "}
-              <a
-                target="_blank"
-                href="https://www.radix-ui.com/"
-                className="font-semibold text-indigo-600"
-              >
-                Radix UI
               </a>
-              .
             </p>
           </div>
         </div>
