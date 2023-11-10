@@ -1,4 +1,4 @@
-import { Button, GridList, Item } from "react-aria-components";
+import { Button, GridList, GridListItem } from "react-aria-components";
 import type { Selection, SelectionMode } from "react-aria-components";
 import {
   animate,
@@ -105,7 +105,7 @@ const messages = {
   ],
 };
 
-const MotionItem = motion(Item);
+const MotionItem = motion(GridListItem);
 const inertiaTransition = {
   type: "inertia" as const,
   bounceStiffness: 300,
@@ -193,7 +193,7 @@ function ListItem({
   children,
   textValue,
   onRemove,
-}: Omit<React.ComponentPropsWithoutRef<typeof Item>, "children"> & {
+}: Omit<React.ComponentPropsWithoutRef<typeof GridListItem>, "children"> & {
   children?: React.ReactNode;
   onRemove: () => void;
 }) {

@@ -1,12 +1,12 @@
 import {
   Button,
-  Item,
+  MenuItem,
   Menu,
   MenuTrigger,
   Popover,
   Separator,
 } from "react-aria-components";
-import type { ItemProps } from "react-aria-components";
+import type { MenuItemProps } from "react-aria-components";
 import { Bars3Icon } from "@heroicons/react/24/outline";
 // import RailIcon from "@spectrum-icons/workflow/Rail";
 
@@ -23,13 +23,13 @@ export default function MenuExample() {
         </Button>
         <Popover className="p-1 w-56 overflow-auto rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 entering:animate-in entering:fade-in entering:zoom-in-95 exiting:animate-out exiting:fade-out exiting:zoom-out-95 fill-mode-forwards origin-top-left">
           <Menu className="outline-none">
-            <MenuItem id="new">New…</MenuItem>
-            <MenuItem id="open">Open…</MenuItem>
+            <MyMenuItem id="new">New…</MyMenuItem>
+            <MyMenuItem id="open">Open…</MyMenuItem>
             <Separator className="bg-gray-300 h-[1px] mx-3 my-1" />
-            <MenuItem id="save">Save</MenuItem>
-            <MenuItem id="save-as">Save as…</MenuItem>
+            <MyMenuItem id="save">Save</MyMenuItem>
+            <MyMenuItem id="save-as">Save as…</MyMenuItem>
             <Separator className="bg-gray-300 h-[1px] mx-3 my-1" />
-            <MenuItem id="print">Print…</MenuItem>
+            <MyMenuItem id="print">Print…</MyMenuItem>
           </Menu>
         </Popover>
       </MenuTrigger>
@@ -37,9 +37,9 @@ export default function MenuExample() {
   );
 }
 
-function MenuItem(props: ItemProps) {
+function MyMenuItem(props: MenuItemProps) {
   return (
-    <Item
+    <MenuItem
       {...props}
       className="group flex w-full items-center rounded-md px-3 py-2 box-border outline-none cursor-default text-gray-900 focus:bg-violet-500 focus:text-white"
     />

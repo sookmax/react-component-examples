@@ -121,7 +121,7 @@ export default function Sheet() {
                     Done
                   </Button>
                 </div>
-                <Heading className="text-3xl font-semibold mb-4">
+                <Heading slot="title" className="text-3xl font-semibold mb-4">
                   Modal sheet
                 </Heading>
                 <p className="text-lg mb-4">

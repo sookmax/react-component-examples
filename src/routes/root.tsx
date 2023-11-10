@@ -1,4 +1,4 @@
-import { Fragment, useState } from "react";
+import { Fragment, useCallback, useMemo, useState } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon, HomeIcon } from "@heroicons/react/24/outline";
 import { MagnifyingGlassIcon } from "@heroicons/react/20/solid";
@@ -70,91 +70,97 @@ export default function Root() {
   const navigation = useNavigation();
   const submit = useSubmit();
 
-  const sideBar = (
-    <div className="flex grow flex-col gap-y-5 overflow-y-auto border-r border-gray-200 bg-white px-4 pb-4">
-      <div className="flex h-16 shrink-0 border-b border-gray-200">
-        <Form
-          id="search-form"
-          role="search"
-          action={window.location.pathname}
-          className="relative flex flex-1"
-        >
-          <label htmlFor="search-field" className="sr-only">
-            Search
-          </label>
-          <MagnifyingGlassIcon
-            className="pointer-events-none absolute inset-y-0 left-0 h-full w-5 text-gray-400"
-            aria-hidden="true"
-          />
-          <input
-            id="search-field"
-            className="block h-full w-full border-0 py-0 pl-8 pr-0 text-gray-900 placeholder:text-gray-400 sm:text-sm outline-none"
-            placeholder="Search..."
-            type="search"
-            name="search"
-            aria-label="Search components"
-            // defaultValue={searchQuery}
-            value={searchQuery}
-            onChange={(event) => {
-              submit(event.currentTarget.form, {
-                replace: !!searchQuery,
-              });
-            }}
-          />
-        </Form>
-      </div>
-      <nav className="flex flex-1 flex-col space-y-6">
-        <h2 className="font-mono text-gray-900 group">
-          <NavLink
-            to="/"
-            className={({ isActive }) =>
-              classNames(
-                "flex items-center space-x-2 group-hover:text-indigo-600",
-                isActive && "text-indigo-600"
-              )
-            }
-            onClick={() => setSidebarOpen(false)}
+  const onLinkClick = useCallback(() => {
+    setTimeout(() => {
+      setSidebarOpen(false);
+    }, 200);
+  }, []);
+
+  const sideBar = useMemo(
+    () => (
+      <div className="flex grow flex-col gap-y-5 overflow-y-auto border-r border-gray-200 bg-white px-4 pb-4">
+        <div className="flex h-16 shrink-0 border-b border-gray-200">
+          <Form
+            id="search-form"
+            role="search"
+            action={window.location.pathname}
+            className="relative flex flex-1"
           >
-            <HomeIcon className="h-6 w-6 shrink-0" />
-            <span>Home</span>
-          </NavLink>
-        </h2>
-        <div>
-          <h3 className="font-mono mb-4">React Aria Components</h3>
-          <ul role="list" className="space-y-1">
-            {searchResult.map((result) => (
-              <li
-                key={result.item.displayName}
-                onClick={() => setSidebarOpen(false)}
-              >
-                <NavLink
-                  to={result.item.path}
-                  className={({ isActive }) =>
-                    classNames(
-                      isActive
-                        ? "bg-gray-50 text-indigo-600"
-                        : "text-gray-700 hover:text-indigo-600 hover:bg-gray-50",
-                      "group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold"
-                    )
-                  }
-                >
-                  <span>
-                    {result.highlights.map(({ char, highlight }, index) => (
-                      <span
-                        key={index}
-                        className={classNames(highlight && "text-red-500")}
-                      >
-                        {char}
-                      </span>
-                    ))}
-                  </span>
-                </NavLink>
-              </li>
-            ))}
-          </ul>
+            <label htmlFor="search-field" className="sr-only">
+              Search
+            </label>
+            <MagnifyingGlassIcon
+              className="pointer-events-none absolute inset-y-0 left-0 h-full w-5 text-gray-400"
+              aria-hidden="true"
+            />
+            <input
+              id="search-field"
+              className="block h-full w-full border-0 py-0 pl-8 pr-0 text-gray-900 placeholder:text-gray-400 sm:text-sm outline-none"
+              placeholder="Search..."
+              type="search"
+              name="search"
+              aria-label="Search components"
+              // defaultValue={searchQuery}
+              value={searchQuery}
+              onChange={(event) => {
+                submit(event.currentTarget.form, {
+                  replace: !!searchQuery,
+                });
+              }}
+            />
+          </Form>
         </div>
-      </nav>
-    </div>
+        <nav className="flex flex-1 flex-col space-y-6">
+          <h2 className="font-mono text-gray-900 group">
+            <NavLink
+              to="/"
+              className={({ isActive }) =>
+                classNames(
+                  "flex items-center space-x-2 group-hover:text-indigo-600",
+                  isActive && "text-indigo-600"
+                )
+              }
+              onClick={onLinkClick}
+            >
+              <HomeIcon className="h-6 w-6 shrink-0" />
+              <span>Home</span>
+            </NavLink>
+          </h2>
+          <div>
+            <h3 className="font-mono mb-4">React Aria Components</h3>
+            <ul role="list" className="space-y-1">
+              {searchResult.map((result) => (
+                <li key={result.item.displayName} onClick={onLinkClick}>
+                  <NavLink
+                    to={result.item.path}
+                    className={({ isActive }) =>
+                      classNames(
+                        isActive
+                          ? "bg-gray-50 text-indigo-600"
+                          : "text-gray-700 hover:text-indigo-600 hover:bg-gray-50",
+                        "group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold"
+                      )
+                    }
+                  >
+                    <span>
+                      {result.highlights.map(({ char, highlight }, index) => (
+                        <span
+                          key={index}
+                          className={classNames(highlight && "text-red-500")}
+                        >
+                          {char}
+                        </span>
+                      ))}
+                    </span>
+                  </NavLink>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </nav>
+      </div>
+    ),
+    [onLinkClick, searchQuery, searchResult, submit]
   );
 
   return (
@@ -221,12 +227,12 @@ export default function Root() {
         </Transition.Root>
 
         {/* Static sidebar for desktop */}
-        <div className="hidden lg:flex lg:w-72 lg:flex-col lg:relative lg:z-10">
+        <div className="hidden lg:flex lg:w-72 lg:flex-col lg:relative lg:z-10 lg:shrink-0">
           {/* Sidebar component, swap this element with another sidebar if you like */}
           {sideBar}
         </div>
 
-        <div className="grow flex flex-col h-full">
+        <div className="grow flex flex-col h-full max-w-[100vw] lg:max-w-[calc(100vw-288px)]">
           <div className="lg:hidden relative z-10 flex h-16 shrink-0 items-center justify-between gap-x-4 border-b border-gray-200 bg-white px-4 shadow-sm sm:gap-x-6 sm:px-6 lg:px-8">
             <button
               type="button"
@@ -246,7 +252,7 @@ export default function Root() {
           </div>
           <main
             className={classNames(
-              "grow",
+              "w-full h-full",
               navigation.state === "loading" ?? "opacity-25"
             )}
           >

@@ -1,4 +1,4 @@
-import { Item, ListBox, ProgressBar, Text } from "react-aria-components";
+import { ListBoxItem, ListBox, ProgressBar, Text } from "react-aria-components";
 import { useAsyncList } from "react-stately";
 import { CheckCircleIcon } from "@heroicons/react/24/outline";
 import React, { useEffect, useRef } from "react";
@@ -99,7 +99,7 @@ export default function ImageGridExample() {
         className="overflow-auto outline-none bg-white rounded-lg shadow p-2 h-[500px] w-full max-w-[500px] grid grid-cols-3 gap-3 empty:flex"
       >
         {(item) => (
-          <Item
+          <ListBoxItem
             key={item.urls.regular || item.user.name}
             textValue={item.user.name}
             className="relative rounded outline-none group cursor-default h-[120px]"
@@ -126,7 +126,7 @@ export default function ImageGridExample() {
                 </div>
               </div>
             )}
-          </Item>
+          </ListBoxItem>
         )}
         {/* {items.map((item, idx) => {
           return (

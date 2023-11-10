@@ -1,7 +1,7 @@
 import {
   Collection,
   Header,
-  Item,
+  ListBoxItem,
   ListBox,
   Section,
   Text,
@@ -85,7 +85,7 @@ const people = [
 
 export default function ContactListExample() {
   return (
-    <div className="bg-gradient-to-r from-blue-500 to-sky-500 p-8 h-full w-full flex justify-center items-center sm:items-start">
+    <div className="bg-gradient-to-r from-blue-500 to-sky-500 p-8 h-full w-full flex justify-center items-center">
       <ListBox
         aria-label="Contacts"
         selectionMode="multiple"
@@ -128,7 +128,7 @@ function Contact({
   item: { id: number | string; avatar: string; name: string; username: string };
 }) {
   return (
-    <Item
+    <ListBoxItem
       id={item.id}
       textValue={item.name}
       className="group relative py-1 px-2 outline-none cursor-default grid grid-rows-2 grid-flow-col auto-cols-max gap-x-3 rounded selected:bg-blue-500 text-slate-700 selected:text-white selected:[&:has(+[data-selected])]:rounded-b-none [&[data-selected]+[data-selected]]:rounded-t-none focus-visible:ring-2 ring-offset-2 ring-blue-500"
@@ -148,6 +148,6 @@ function Contact({
         {item.username}
       </Text>
       <div className="absolute left-12 right-2 bottom-0 h-px bg-gray-200 group-selected:bg-blue-400 [.group[data-selected]:has(+:not([data-selected]))_&]:hidden [.group:not([data-selected]):has(+[data-selected])_&]:hidden [.group[data-selected]:last-child_&]:hidden" />
-    </Item>
+    </ListBoxItem>
   );
 }

@@ -27,7 +27,7 @@ export default function DatePickerExample() {
     <div className="bg-gradient-to-r from-violet-500 to-fuchsia-600 p-12 h-full w-full flex items-start justify-center">
       <DatePicker
         className="group flex flex-col gap-1 w-[200px]"
-        // shouldCloseOnSelect={false}
+        shouldCloseOnSelect={false}
       >
         <Label className="text-white cursor-default">Date</Label>
         <Group className="flex rounded-lg bg-white/90 focus-within:bg-white group-open:bg-white transition pl-3 shadow-md text-gray-700 focus-visible:ring-2 ring-black">
@@ -67,7 +67,7 @@ export default function DatePickerExample() {
                   {(date) => (
                     <CalendarCell
                       date={date}
-                      className="w-9 h-9 outline-none cursor-default rounded-full flex items-center justify-center outside-month:text-gray-300 hover:bg-gray-100 pressed:bg-gray-200 selected:bg-violet-700 selected:text-white focus-visible:ring ring-violet-600/70 ring-offset-2"
+                      className="w-9 h-9 outline-none cursor-default rounded-full flex items-center justify-center outside-month:text-gray-300 [&:not([data-selected])]:hover:bg-gray-100 pressed:bg-gray-200 selected:bg-violet-700 selected:text-white focus-visible:ring ring-violet-600/70 ring-offset-2"
                     />
                   )}
                 </CalendarGridBody>
